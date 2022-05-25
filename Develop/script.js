@@ -9,31 +9,40 @@ let criteria = {
   isLower: false,
   isSpecial: false,
   isUpper: false,
+  promptResp: "" //response from the prompt
 }
 
 let randomize = () => {
   let charSelector;
   let charRestrict = 3;
   let password = "";
+  let complete = 0;
 
-  for (let i = 0; i < criteria.length; i ++) {
+  for (let i = 0; i < criteria.length; i++) {
     //generate random number between 1 and 3 to choose between lowercase, uppercase, and special characters
-    charSelector = Math.floor(Math.random() * charRestrict + 1);
+    console.log(criteria.length);
+    do {
+      charSelector = Math.floor(Math.random() * charRestrict + 1);
 
-    if (charSelector == 1 && isLower == true) { //append lowercase letter
-      password += alphabetsLower[Math.floor(Math.random() * 25)];
+      if (charSelector == 1 && criteria.isLower == true) { //append lowercase letter
+        password += alphabetsLower[Math.floor(Math.random() * 25)];
+        complete = 1;
 
-    } else if (charSelector == 2) {  //append uppcase letter
-      password += alphabetsHigher[Math.floor(Math.random() * 25)];
-      
-    } else if (charSelector == 3) { //append special character
-      password += specialChar[Math.floor(Math.random() * specialChar.length)];
+      } else if (charSelector == 2 && criteria.isUpper == true) {  //append uppcase letter
+        password += alphabetsHigher[Math.floor(Math.random() * 25)];
+        complete = 1;
 
-    } else if (charSelector == 4) { //append numeric
- 
-    }
+      } else if (charSelector == 3 && criteria.isSpecial == true) { //append special character
+        password += specialChar[Math.floor(Math.random() * specialChar.length)];
+        complete = 1;
 
+      } else if (charSelector == 4 && criteria.isNumeric) { //append numeric
+        complete = 1;
+      }
 
+    } while (complete == 0);
+
+    complete = 0;
   }
 
   return password;
@@ -41,14 +50,48 @@ let randomize = () => {
 
 
 let generatePassword = () => {
+  //prompt for pasword length
   do {
     criteria.length = window.prompt("Enter your desired length for the password(min: 8 characters, max 128 characters):");
 
-    if(criteria.length < 8 || criteria.length > 128) {
+    if (criteria.length < 8 || criteria.length > 128) {
       alert("password length must be between 8 and 128");
     }
 
   } while (criteria.length < 8 && criteria.length > 128);
+
+  //prompt for lowercase
+  do {
+    criteria.promptResp = window.prompt("Would you like to include Lowercase characters(y/n)?");
+
+    if (criteria.promptResp != 'y' && criteria.promptResp != 'n') {
+      alert("Please Enter 'y' for yes or 'n' (no)");
+    }
+
+    if (criteria.promptResp == 'y') {
+      criteria.isLower = true;
+    } else if (criteria.promptResp == 'n') {
+      criteria.isLower = false;
+    }
+
+  } while (criteria.promptResp != "y" && criteria.promptResp != "n");
+
+    //prompt for uppercase
+    do {
+      criteria.promptResp = "";
+      criteria.promptResp = window.prompt("Would you like to include Uowercase characters(y/n)?");
+
+      if (criteria.promptResp != 'y' && criteria.promptResp != 'n') {
+        alert("Please Enter 'y' for (yes) or 'n' for (no)");
+      }
+  
+      if (criteria.promptResp == 'y') {
+        criteria.isUpper = true;
+      } else if (criteria.promptResp == 'n') {
+        criteria.isUpper = false;
+      }
+  
+    } while (criteria.promptResp != "y" && criteria.promptResp != "n");
 
 
   return randomize();
