@@ -5,6 +5,10 @@ const specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 let criteria = {
   length: 0,
+  isNumeric: false,
+  isLower: false,
+  isSpecial: false,
+  isUpper: false,
 }
 
 let randomize = () => {
@@ -15,9 +19,8 @@ let randomize = () => {
   for (let i = 0; i < criteria.length; i ++) {
     //generate random number between 1 and 3 to choose between lowercase, uppercase, and special characters
     charSelector = Math.floor(Math.random() * charRestrict + 1);
-    console.log(charSelector);
 
-    if (charSelector == 1) { //append lowercase letter
+    if (charSelector == 1 && isLower == true) { //append lowercase letter
       password += alphabetsLower[Math.floor(Math.random() * 25)];
 
     } else if (charSelector == 2) {  //append uppcase letter
