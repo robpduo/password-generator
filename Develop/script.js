@@ -23,9 +23,11 @@ let randomize = () => {
     } else if (charSelector == 2) {  //append uppcase letter
       password += alphabetsHigher[Math.floor(Math.random() * 25)];
       
-    } else {
+    } else if (charselector == 3) { //append special character
       password += specialChar[Math.floor(Math.random() * specialChar.length)];
 
+    } else if (char) { //append numeric
+      
     }
 
 
@@ -38,7 +40,7 @@ let randomize = () => {
 let generatePassword = () => {
   do {
     criteria.length = window.prompt("Enter your desired length for the password(min: 8 characters, max 128 characters):");
-    
+
     if(criteria.length < 8 || criteria.length > 128) {
       alert("password length must be between 8 and 128");
     }
