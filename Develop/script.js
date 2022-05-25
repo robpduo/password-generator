@@ -23,11 +23,11 @@ let randomize = () => {
     } else if (charSelector == 2) {  //append uppcase letter
       password += alphabetsHigher[Math.floor(Math.random() * 25)];
       
-    } else if (charselector == 3) { //append special character
+    } else if (charSelector == 3) { //append special character
       password += specialChar[Math.floor(Math.random() * specialChar.length)];
 
-    } else if (char) { //append numeric
-      
+    } else if (charSelector == 4) { //append numeric
+ 
     }
 
 
