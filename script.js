@@ -26,19 +26,19 @@ let randomize = () => {
       charSelector = Math.floor(Math.random() * charRestrict + 1);
 
       if (charSelector == 1 && criteria.isLower == true) { //append lowercase letter
-        password += alphabetsLower[Math.floor(Math.random() * (alphabetsLower.length -1) )];
+        password += alphabetsLower[Math.floor(Math.random() * (alphabetsLower.length) )];
         complete = 1;
 
       } else if (charSelector == 2 && criteria.isUpper == true) {  //append uppcase letter
-        password += alphabetsUpper[Math.floor(Math.random() * (alphabetsUpper.length -1))];
+        password += alphabetsUpper[Math.floor(Math.random() * (alphabetsUpper.length))];
         complete = 1;
 
       } else if (charSelector == 3 && criteria.isSpecial == true) { //append special character
-        password += specialChar[Math.floor(Math.random() * (specialChar.length - 1) )];
+        password += specialChar[Math.floor(Math.random() * (specialChar.length) )];
         complete = 1;
 
       } else if (charSelector == 4 && criteria.isNumeric == true) { //append numeric
-        password += numeric[Math.floor(Math.random() * (numeric.length - 1))];
+        password += numeric[Math.floor(Math.random() * (numeric.length))];
         complete = 1;
       }
 
