@@ -76,23 +76,40 @@ let generatePassword = () => {
 
   } while (criteria.promptResp != "y" && criteria.promptResp != "n");
 
-    //prompt for uppercase
-    do {
-      criteria.promptResp = "";
-      criteria.promptResp = window.prompt("Would you like to include Uowercase characters(y/n)?");
+  //prompt for uppercase
+  do {
+    criteria.promptResp = "";
+    criteria.promptResp = window.prompt("Would you like to include Uowercase characters(y/n)?");
 
-      if (criteria.promptResp != 'y' && criteria.promptResp != 'n') {
-        alert("Please Enter 'y' for (yes) or 'n' for (no)");
-      }
-  
-      if (criteria.promptResp == 'y') {
-        criteria.isUpper = true;
-      } else if (criteria.promptResp == 'n') {
-        criteria.isUpper = false;
-      }
-  
-    } while (criteria.promptResp != "y" && criteria.promptResp != "n");
+    if (criteria.promptResp != 'y' && criteria.promptResp != 'n') {
+      alert("Please Enter 'y' for (yes) or 'n' for (no)");
+    }
 
+    if (criteria.promptResp == 'y') {
+      criteria.isUpper = true;
+    } else if (criteria.promptResp == 'n') {
+      criteria.isUpper = false;
+    }
+
+  } while (criteria.promptResp != "y" && criteria.promptResp != "n");
+
+
+  //prompt for special
+  do {
+    criteria.promptResp = "";
+    criteria.promptResp = window.prompt("Would you like to include Special characters(y/n)?");
+
+    if (criteria.promptResp != 'y' && criteria.promptResp != 'n') {
+      alert("Please Enter 'y' for (yes) or 'n' for (no)");
+    }
+
+    if (criteria.promptResp == 'y') {
+      criteria.isSpecial = true;
+    } else if (criteria.promptResp == 'n') {
+      criteria.isSpecial = false;
+    }
+
+  } while (criteria.promptResp != "y" && criteria.promptResp != "n");
 
   return randomize();
 
