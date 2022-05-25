@@ -1,6 +1,6 @@
 // Assignment code here
 const alphabetsLower = "abcdefghijklmnopqrstuvwxyz";
-const alphabetsHigher = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const alphabetsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 const numeric = "0123456789";
 
@@ -30,7 +30,7 @@ let randomize = () => {
         complete = 1;
 
       } else if (charSelector == 2 && criteria.isUpper == true) {  //append uppcase letter
-        password += alphabetsHigher[Math.floor(Math.random() * (alphabetsUpper.length -1))];
+        password += alphabetsUpper[Math.floor(Math.random() * (alphabetsUpper.length -1))];
         complete = 1;
 
       } else if (charSelector == 3 && criteria.isSpecial == true) { //append special character
