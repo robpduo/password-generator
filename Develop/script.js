@@ -2,6 +2,8 @@
 const alphabetsLower = "abcdefghijklmnopqrstuvwxyz";
 const alphabetsHigher = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+const numeric = "0123456789";
+
 
 let criteria = {
   length: 0,
@@ -14,29 +16,29 @@ let criteria = {
 
 let randomize = () => {
   let charSelector;
-  let charRestrict = 3;
+  let charRestrict = 4;
   let password = "";
   let complete = 0;
 
   for (let i = 0; i < criteria.length; i++) {
     //generate random number between 1 and 3 to choose between lowercase, uppercase, and special characters
-    console.log(criteria.length);
     do {
       charSelector = Math.floor(Math.random() * charRestrict + 1);
 
       if (charSelector == 1 && criteria.isLower == true) { //append lowercase letter
-        password += alphabetsLower[Math.floor(Math.random() * 25)];
+        password += alphabetsLower[Math.floor(Math.random() * (alphabetsLower.length -1) )];
         complete = 1;
 
       } else if (charSelector == 2 && criteria.isUpper == true) {  //append uppcase letter
-        password += alphabetsHigher[Math.floor(Math.random() * 25)];
+        password += alphabetsHigher[Math.floor(Math.random() * (alphabetsUpper.length -1))];
         complete = 1;
 
       } else if (charSelector == 3 && criteria.isSpecial == true) { //append special character
-        password += specialChar[Math.floor(Math.random() * specialChar.length)];
+        password += specialChar[Math.floor(Math.random() * (specialChar.length - 1) )];
         complete = 1;
 
-      } else if (charSelector == 4 && criteria.isNumeric) { //append numeric
+      } else if (charSelector == 4 && criteria.isNumeric == true) { //append numeric
+        password += numeric[Math.floor(Math.random() * (numeric.length - 1))];
         complete = 1;
       }
 
@@ -110,6 +112,23 @@ let generatePassword = () => {
     }
 
   } while (criteria.promptResp != "y" && criteria.promptResp != "n");
+
+    //prompt for numeric
+    do {
+      criteria.promptResp = "";
+      criteria.promptResp = window.prompt("Would you like to include Numeric characters(y/n)?");
+  
+      if (criteria.promptResp != 'y' && criteria.promptResp != 'n') {
+        alert("Please Enter 'y' for (yes) or 'n' for (no)");
+      }
+  
+      if (criteria.promptResp == 'y') {
+        criteria.isNumeric= true;
+      } else if (criteria.promptResp == 'n') {
+        criteria.isNumeric = false;
+      }
+  
+    } while (criteria.promptResp != "y" && criteria.promptResp != "n");
 
   return randomize();
 
