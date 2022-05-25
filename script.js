@@ -81,7 +81,7 @@ let generatePassword = () => {
   //prompt for uppercase
   do {
     criteria.promptResp = "";
-    criteria.promptResp = window.prompt("Would you like to include Uowercase characters(y/n)?");
+    criteria.promptResp = window.prompt("Would you like to include Uppercase characters(y/n)?");
 
     if (criteria.promptResp != 'y' && criteria.promptResp != 'n') {
       alert("Please Enter 'y' for (yes) or 'n' for (no)");
