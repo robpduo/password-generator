@@ -10,7 +10,7 @@ let criteria = {
 let randomize = () => {
   let charSelector;
   let charRestrict = 3;
-  let password = "password: ";
+  let password = "";
 
   for (let i = 0; i < criteria.length; i ++) {
     //generate random number between 1 and 3 to choose between lowercase, uppercase, and special characters
@@ -36,7 +36,16 @@ let randomize = () => {
 
 
 let generatePassword = () => {
-  criteria.length = window.prompt("Enter your desired length for the password(min: 8 characters, max 128 characters):");
+  do {
+    criteria.length = window.prompt("Enter your desired length for the password(min: 8 characters, max 128 characters):");
+    
+    if(criteria.length < 8 || criteria.length > 128) {
+      alert("password length must be between 8 and 128");
+    }
+
+  } while (criteria.length < 8 && criteria.length > 128);
+
+
   return randomize();
 
 }
